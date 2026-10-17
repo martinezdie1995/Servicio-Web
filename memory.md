@@ -25,6 +25,7 @@
 - Landing page con paleta general verde petróleo/coral/crema/dorado.
 - Cada rubro tiene paleta y tratamiento visual propios: interiorismo editorial, panadería cálida, mascotas lúdica, floristería botánica y peluquería de estética editorial.
 - Cinco previews enlazan a páginas completas de demostración.
+- Publicación en GitHub Pages configurada con GitHub Actions; Vite y los enlaces/recursos estáticos usan la base `/Servicio-Web/`.
 
 ## Funcionalidades implementadas
 - Hero principal con CTA principal y secundario.

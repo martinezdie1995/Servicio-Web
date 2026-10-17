@@ -4,7 +4,10 @@ import DemoPage from './components/DemoPage'
 const whatsappLink =
   'https://wa.me/5491121858308?text=Hola%2C+me+interesa+una+p%C3%A1gina+web+para+mi+comercio.'
 
-const demoMatch = window.location.pathname.match(/^\/demos\/([^/]+)\/?$/)
+const appPath = window.location.pathname.startsWith(import.meta.env.BASE_URL)
+  ? `/${window.location.pathname.slice(import.meta.env.BASE_URL.length)}`
+  : window.location.pathname
+const demoMatch = appPath.match(/^\/demos\/([^/]+)\/?$/)
 const activeDemo = demoBusinesses.find((business) => business.id === demoMatch?.[1])
 
 const navigation = [
@@ -228,7 +231,7 @@ function App() {
             {demoBusinesses.map((business) => (
               <article key={business.id} className="overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-soft transition hover:-translate-y-1 hover:shadow-xl">
                 <a
-                  href={`/demos/${business.id}`}
+                  href={`${import.meta.env.BASE_URL}demos/${business.id}`}
                   aria-label={`Abrir la página de demostración de ${business.name}`}
                   className="group block p-3 pb-0 focus-visible:outline-4 focus-visible:outline-offset-[-4px] focus-visible:outline-[#df6545] sm:p-5 sm:pb-0"
                 >
@@ -301,7 +304,7 @@ function App() {
                     <h3 className="text-lg font-black text-slate-900 sm:text-xl">{business.name}</h3>
                     <p className="mt-1 text-xs text-slate-600 sm:text-sm">{business.category} · {business.location}</p>
                   </div>
-                  <a href={`/demos/${business.id}`} className="inline-flex items-center justify-center rounded-full px-4 py-2 text-xs font-bold text-white transition hover:brightness-110 sm:px-5 sm:py-2.5 sm:text-sm" style={{ backgroundColor: business.accent }}>
+                  <a href={`${import.meta.env.BASE_URL}demos/${business.id}`} className="inline-flex items-center justify-center rounded-full px-4 py-2 text-xs font-bold text-white transition hover:brightness-110 sm:px-5 sm:py-2.5 sm:text-sm" style={{ backgroundColor: business.accent }}>
                     Ver sitio completo
                   </a>
                 </div>

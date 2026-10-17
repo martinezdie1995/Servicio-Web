@@ -43,6 +43,8 @@ export type ProcessStep = {
   icon: string
 }
 
+const publicAsset = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, '')}`
+
 export const problemCards: ProblemItem[] = [
   {
     title: 'Productos dispersos',
@@ -125,14 +127,14 @@ export const demoBusinesses: DemoBusiness[] = [
     location: 'Villa Crespo, CABA',
     hours: 'Lun a Sab · 9:00 a 18:30',
     phone: '+54 9 11 5555-0123',
-    heroImage: '/images/products/mueble-sofa.webp',
+    heroImage: publicAsset('/images/products/mueble-sofa.webp'),
     accent: '#34594b',
     softAccent: '#f0eee5',
     badges: ['Colecciones', 'Espacios', 'Diseño a medida'],
     showcase: [
-      { name: 'La calma del living', tag: 'Living', image: '/images/products/mueble-sofa.webp', description: 'Texturas naturales y líneas que invitan a quedarse.' },
-      { name: 'Un espacio para compartir', tag: 'Ambientes', image: '/images/products/mueble-mesa.webp', description: 'Ideas para hacer de cada rincón un lugar propio.' },
-      { name: 'Descanso con diseño', tag: 'Dormitorio', image: '/images/products/mueble-dormitorio.webp', description: 'Muebles pensados para acompañar tus momentos.' },
+      { name: 'La calma del living', tag: 'Living', image: publicAsset('/images/products/mueble-sofa.webp'), description: 'Texturas naturales y líneas que invitan a quedarse.' },
+      { name: 'Un espacio para compartir', tag: 'Ambientes', image: publicAsset('/images/products/mueble-mesa.webp'), description: 'Ideas para hacer de cada rincón un lugar propio.' },
+      { name: 'Descanso con diseño', tag: 'Dormitorio', image: publicAsset('/images/products/mueble-dormitorio.webp'), description: 'Muebles pensados para acompañar tus momentos.' },
     ],
   },
   {
@@ -147,14 +149,14 @@ export const demoBusinesses: DemoBusiness[] = [
     location: 'Palermo, CABA',
     hours: 'Lun a Dom · 8:00 a 20:00',
     phone: '+54 9 11 5555-0456',
-    heroImage: '/images/products/pan-croissant.webp',
+    heroImage: publicAsset('/images/products/pan-croissant.webp'),
     accent: '#a34b31',
     softAccent: '#fff2d8',
     badges: ['Del horno', 'Pastelería', 'Masa madre'],
     showcase: [
-      { name: 'Torta de chocolate', price: '$4.800', tag: 'Popular', image: '/images/products/pan-torta.webp' },
-      { name: 'Factura clásica', price: '$1.200', tag: 'Frescura', image: '/images/products/pan-croissant.webp' },
-      { name: 'Pan de masa madre', price: '$2.300', tag: 'Horneado hoy', image: '/images/products/pan-hogaza.webp' },
+      { name: 'Torta de chocolate', price: '$4.800', tag: 'Popular', image: publicAsset('/images/products/pan-torta.webp') },
+      { name: 'Factura clásica', price: '$1.200', tag: 'Frescura', image: publicAsset('/images/products/pan-croissant.webp') },
+      { name: 'Pan de masa madre', price: '$2.300', tag: 'Horneado hoy', image: publicAsset('/images/products/pan-hogaza.webp') },
     ],
   },
   {
@@ -169,14 +171,14 @@ export const demoBusinesses: DemoBusiness[] = [
     location: 'Belgrano, CABA',
     hours: 'Lun a Sáb · 9:00 a 19:00',
     phone: '+54 9 11 5555-0789',
-    heroImage: '/images/products/mascota-perro.webp',
+    heroImage: publicAsset('/images/products/mascota-perro.webp'),
     accent: '#27766f',
     softAccent: '#e8f2ee',
     badges: ['Paseo', 'Descanso', 'Nutrición'],
     showcase: [
-      { name: 'Alimento para mascotas', price: '$7.900', tag: 'Nutrición', image: '/images/products/mascota-alimento.webp' },
-      { name: 'Ropa para perros', price: '$3.200', tag: 'Abrigo', image: '/images/products/mascota-perro.webp' },
-      { name: 'Descanso para gatos', price: '$5.400', tag: 'Confort', image: '/images/products/mascota-gato.webp' },
+      { name: 'Alimento para mascotas', price: '$7.900', tag: 'Nutrición', image: publicAsset('/images/products/mascota-alimento.webp') },
+      { name: 'Ropa para perros', price: '$3.200', tag: 'Abrigo', image: publicAsset('/images/products/mascota-perro.webp') },
+      { name: 'Descanso para gatos', price: '$5.400', tag: 'Confort', image: publicAsset('/images/products/mascota-gato.webp') },
     ],
   },
   {
@@ -191,14 +193,14 @@ export const demoBusinesses: DemoBusiness[] = [
     location: 'San Telmo, CABA',
     hours: 'Lun a Dom · 10:00 a 20:00',
     phone: '+54 9 11 5555-0111',
-    heroImage: '/images/products/flor-ramo.webp',
+    heroImage: publicAsset('/images/products/flor-ramo.webp'),
     accent: '#94556a',
     softAccent: '#f7e9ec',
     badges: ['Ramos', 'Eventos', 'Flores de estación'],
     showcase: [
-      { name: 'Un gesto inesperado', tag: 'Ramos', image: '/images/products/flor-ramo.webp', description: 'Flores frescas, elegidas y armadas a mano.' },
-      { name: 'Color para todos los días', tag: 'Estación', image: '/images/products/flor-tulipanes.webp', description: 'La belleza simple de las flores de temporada.' },
-      { name: 'Celebrar en flores', tag: 'Eventos', image: '/images/products/flor-arreglo.webp', description: 'Diseños florales pensados para cada ocasión.' },
+      { name: 'Un gesto inesperado', tag: 'Ramos', image: publicAsset('/images/products/flor-ramo.webp'), description: 'Flores frescas, elegidas y armadas a mano.' },
+      { name: 'Color para todos los días', tag: 'Estación', image: publicAsset('/images/products/flor-tulipanes.webp'), description: 'La belleza simple de las flores de temporada.' },
+      { name: 'Celebrar en flores', tag: 'Eventos', image: publicAsset('/images/products/flor-arreglo.webp'), description: 'Diseños florales pensados para cada ocasión.' },
     ],
   },
   {
@@ -213,7 +215,7 @@ export const demoBusinesses: DemoBusiness[] = [
     location: 'Palermo, CABA',
     hours: 'Mar a Sáb · 10:00 a 20:00',
     phone: '+54 9 11 5555-0222',
-    heroImage: '/images/haircuts/corte-bob-unsplash.jpg',
+    heroImage: publicAsset('/images/haircuts/corte-bob-unsplash.jpg'),
     accent: '#533c35',
     softAccent: '#f4eee8',
     badges: ['Cortes', 'Color', 'Textura natural'],
@@ -221,19 +223,19 @@ export const demoBusinesses: DemoBusiness[] = [
       {
         name: 'Bob texturizado',
         tag: 'Medio',
-        image: '/images/haircuts/corte-bob-unsplash.jpg',
+        image: publicAsset('/images/haircuts/corte-bob-unsplash.jpg'),
         description: 'Un largo versátil con capas suaves y movimiento natural.',
       },
       {
         name: 'Corte pixie',
         tag: 'Corto',
-        image: '/images/haircuts/corte-pixie-unsplash.jpg',
+        image: publicAsset('/images/haircuts/corte-pixie-unsplash.jpg'),
         description: 'Un corte corto con carácter, liviano y fácil de llevar.',
       },
       {
         name: 'Rulos con movimiento',
         tag: 'Natural',
-        image: '/images/haircuts/corte-rulos-unsplash.jpg',
+        image: publicAsset('/images/haircuts/corte-rulos-unsplash.jpg'),
         description: 'Volumen y definición para acompañar la textura natural.',
       },
     ],

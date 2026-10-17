@@ -6,6 +6,7 @@ type DemoPageProps = {
 
 const whatsappLink =
   'https://wa.me/5491121858308?text=Hola%2C+vi+la+demostraci%C3%B3n+y+quiero+consultar.'
+const homeLink = `${import.meta.env.BASE_URL}#demostraciones`
 
 const themes = {
   furniture: {
@@ -57,7 +58,7 @@ function DemoPage({ business }: DemoPageProps) {
         <div>
           <p className="text-sm font-bold uppercase tracking-[0.2em] text-[#173f3f]">Página no encontrada</p>
           <h1 className="mt-3 text-3xl font-black text-slate-900">No encontramos esta demostración.</h1>
-          <a href="/#demostraciones" className="mt-6 inline-flex rounded-full bg-[#173f3f] px-5 py-3 font-bold text-white hover:bg-[#225656]">
+          <a href={homeLink} className="mt-6 inline-flex rounded-full bg-[#173f3f] px-5 py-3 font-bold text-white hover:bg-[#225656]">
             Volver a las demostraciones
           </a>
         </div>
@@ -80,7 +81,7 @@ function DemoPage({ business }: DemoPageProps) {
 
       <header className={`border-b ${theme.header}`}>
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
-          <a href="/#demostraciones" className="inline-flex items-center gap-2 text-xs font-semibold opacity-75 transition hover:opacity-100 sm:text-sm">
+          <a href={homeLink} className="inline-flex items-center gap-2 text-xs font-semibold opacity-75 transition hover:opacity-100 sm:text-sm">
             <span aria-hidden="true">←</span><span className="hidden sm:inline">Ver otros estilos</span><span className="sm:hidden">Ejemplos</span>
           </a>
           <a href="#" className={`text-center text-xl font-black tracking-[0.08em] sm:text-3xl ${business.layout === 'bakery' || business.layout === 'florist' ? 'font-serif' : ''}`} style={{ color: business.layout === 'bakery' || business.layout === 'petshop' ? business.accent : undefined }}>
@@ -297,7 +298,7 @@ function DemoPage({ business }: DemoPageProps) {
             Unsplash (licencia)
           </a>
         </p>
-        <a href="/#demostraciones" className="mt-3 inline-block font-bold hover:underline" style={{ color: business.accent }}>
+        <a href={homeLink} className="mt-3 inline-block font-bold hover:underline" style={{ color: business.accent }}>
           ← Volver a WebLocal
         </a>
       </footer>
