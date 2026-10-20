@@ -1,13 +1,19 @@
 import { benefitCards, demoBusinesses, problemCards, processSteps } from './data/siteContent'
 import DemoPage from './components/DemoPage'
+import { demoHref } from './components/demos/demoLinks'
+import developerLogo from '../pics/devLogo.jpg'
 
 const whatsappLink =
   'https://wa.me/5491121858308?text=Hola%2C+me+interesa+una+p%C3%A1gina+web+para+mi+comercio.'
 
-const appPath = window.location.pathname.startsWith(import.meta.env.BASE_URL)
-  ? `/${window.location.pathname.slice(import.meta.env.BASE_URL.length)}`
-  : window.location.pathname
-const demoMatch = appPath.match(/^\/demos\/([^/]+)\/?$/)
+const routePath = window.location.pathname
+const appPath = routePath.startsWith(import.meta.env.BASE_URL)
+  ? `/${routePath.slice(import.meta.env.BASE_URL.length)}`
+  : routePath
+const requestedDemo = new URLSearchParams(window.location.search).get('demo')
+const demoMatch = requestedDemo
+  ? `/demos/${requestedDemo}`.match(/^\/demos\/([^/]+)$/)
+  : appPath.match(/^\/demos\/([^/]+)\/?$/)
 const activeDemo = demoBusinesses.find((business) => business.id === demoMatch?.[1])
 
 const navigation = [
@@ -47,20 +53,12 @@ function App() {
     <div className="min-h-screen bg-[#fffaf2] text-slate-900">
       <header className="sticky top-0 z-50 border-b border-[#e9e3d8] bg-[#fffaf2]/90 backdrop-blur-md">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-          <a href="#inicio" className="flex items-center gap-3 text-sm font-bold tracking-[0.2em] text-slate-900 uppercase">
-            <span className="flex h-10 w-10 items-center justify-center rounded-[0.9rem] bg-gradient-to-br from-[#173f3f] via-[#205451] to-[#31596a] text-[#f7c65d] shadow-lg shadow-[#173f3f]/25 ring-1 ring-white/30" aria-hidden="true">
-              <svg viewBox="0 0 32 32" fill="none" className="h-7 w-7" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M6.25 13.25h19.5v13.5H6.25z" />
-                <path d="m5 13.25 2.2-6h17.6l2.2 6" />
-                <path d="M5 13.25c0 2 1.25 3.25 3 3.25s3-1.25 3-3.25c0 2 1.25 3.25 3 3.25s3-1.25 3-3.25c0 2 1.25 3.25 3 3.25s3-1.25 3-3.25c0 2 1.25 3.25 3 3.25s3-1.25 3-3.25" />
-                <path d="M11 26.75v-6.5h5.5v6.5M20.5 21h2.25" />
-                <path d="m22.75 3 .85 2.4L26 6.25l-2.4.85-.85 2.4-.85-2.4-2.4-.85 2.4-.85.85-2.4Z" fill="currentColor" stroke="none" />
-              </svg>
-            </span>
-            <span>
-              <span className="block">WebLocal</span>
-              <span className="mt-0.5 block text-[9px] font-semibold tracking-[0.14em] text-slate-600">WEB PARA COMERCIOS</span>
-            </span>
+          <a href="#inicio" aria-label="Inicio: Diego Martínez, desarrollo web para comercios" className="block w-[136px] shrink-0 sm:w-[174px] md:w-[190px]">
+            <img
+              src={developerLogo}
+              alt="Diego Martínez — Developer"
+              className="h-auto w-full rounded-md shadow-md shadow-[#173f3f]/15"
+            />
           </a>
 
           <nav aria-label="Navegación principal" className="hidden items-center gap-8 md:flex">
@@ -75,9 +73,10 @@ function App() {
             href={whatsappLink}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center justify-center rounded-full bg-[#173f3f] px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-[#173f3f]/20 transition hover:-translate-y-0.5 hover:bg-[#225656]"
+            className="inline-flex shrink-0 items-center justify-center rounded-full bg-[#173f3f] px-3 py-2.5 text-xs font-semibold text-white shadow-lg shadow-[#173f3f]/20 transition hover:-translate-y-0.5 hover:bg-[#225656] sm:px-4 sm:text-sm"
           >
-            Consultar por WhatsApp
+            <span className="sm:hidden">Consultar</span>
+            <span className="hidden sm:inline">Consultar por WhatsApp</span>
           </a>
         </div>
       </header>
@@ -225,13 +224,16 @@ function App() {
             <h2 className="mt-3 text-3xl font-black tracking-tight text-slate-950 sm:text-4xl">
               Ejemplos de páginas para distintos tipos de comercio.
             </h2>
+            <p className="mx-auto mt-3 max-w-xl text-sm leading-6 text-slate-600">
+              Marcas, productos, precios y datos de contacto son ficticios; solo sirven para mostrar distintas posibilidades de diseño.
+            </p>
           </div>
 
           <div className="grid gap-8">
             {demoBusinesses.map((business) => (
               <article key={business.id} className="overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-soft transition hover:-translate-y-1 hover:shadow-xl">
                 <a
-                  href={`${import.meta.env.BASE_URL}demos/${business.id}`}
+                  href={demoHref(business.id)}
                   aria-label={`Abrir la página de demostración de ${business.name}`}
                   className="group block p-3 pb-0 focus-visible:outline-4 focus-visible:outline-offset-[-4px] focus-visible:outline-[#df6545] sm:p-5 sm:pb-0"
                 >
@@ -304,7 +306,7 @@ function App() {
                     <h3 className="text-lg font-black text-slate-900 sm:text-xl">{business.name}</h3>
                     <p className="mt-1 text-xs text-slate-600 sm:text-sm">{business.category} · {business.location}</p>
                   </div>
-                  <a href={`${import.meta.env.BASE_URL}demos/${business.id}`} className="inline-flex items-center justify-center rounded-full px-4 py-2 text-xs font-bold text-white transition hover:brightness-110 sm:px-5 sm:py-2.5 sm:text-sm" style={{ backgroundColor: business.accent }}>
+                  <a href={demoHref(business.id)} className="inline-flex items-center justify-center rounded-full px-4 py-2 text-xs font-bold text-white transition hover:brightness-110 sm:px-5 sm:py-2.5 sm:text-sm" style={{ backgroundColor: business.accent }}>
                     Ver sitio completo
                   </a>
                 </div>

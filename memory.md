@@ -24,8 +24,15 @@
 ## Estado actual
 - Landing page con paleta general verde petróleo/coral/crema/dorado.
 - Cada rubro tiene paleta y tratamiento visual propios: interiorismo editorial, panadería cálida, mascotas lúdica, floristería botánica y peluquería de estética editorial.
-- Cinco previews enlazan a páginas completas de demostración.
+- Cinco previews enlazan a páginas completas de demostración con estructuras React y hojas de estilo separadas por rubro, no una plantilla compartida.
 - Publicación en GitHub Pages configurada con GitHub Actions; Vite y los enlaces/recursos estáticos usan la base `/Servicio-Web/`.
+
+## Actualización — 20/10/2026
+- La marca del encabezado del servicio usa el monograma del logo personal de Diego Martínez, acompañado por su nombre y una descripción clara del servicio para comercios.
+- Diagnóstico: los enlaces a `/Servicio-Web/demos/{id}` dependen de que el servidor estático reescriba rutas desconocidas a `index.html`. GitHub Pages no ofrece ese fallback; al abrir una demo directamente devuelve 404 antes de que React pueda resolverla.
+- Solución: los previews ahora abren las demos en `/?demo={id}`. GitHub Pages sirve el `index.html` de la raíz con parámetros de consulta, y la navegación completa recarga la app para resolver la demo sin depender de un fallback. El `404.html` de Pages redirige también las rutas antiguas `/demos/{id}` a ese formato; la app conserva el soporte de esas rutas para servidores con fallback.
+- Cada rubro tiene su propio componente y CSS: mueblería editorial, panadería de mostrador, pet shop lúdico, floristería botánica y peluquería de estética editorial. El enrutador solo selecciona la vista; no comparte estructura visual entre páginas.
+- Las demos y la sección de previews avisan que las marcas, productos, precios y datos de contacto son ficticios.
 
 ## Funcionalidades implementadas
 - Hero principal con CTA principal y secundario.

@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="es-AR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f3f1e9" />
+    <title>Buscando la demostración | WebLocal</title>
+    <style>
+      * { box-sizing: border-box; }
+      body { min-height: 100vh; margin: 0; padding: 10vh 8vw; display: grid; place-items: center; background: #f3f1e9; color: #24372f; font-family: Georgia, serif; }
+      main { width: min(100%, 620px); }
+      p { color: #65756a; font: 600 12px "Segoe UI", sans-serif; }
+      h1 { font-size: clamp(38px, 8vw, 70px); font-weight: 400; line-height: 1.02; }
+      a { display: inline-block; padding: 13px 17px; background: #24372f; color: white; font: 600 13px "Segoe UI", sans-serif; text-decoration: none; }
+      a:focus-visible { outline: 3px solid #df6545; outline-offset: 4px; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p>WebLocal / demostraciones</p>
+      <h1>Estamos abriendo el sitio de muestra.</h1>
+      <a id="home" href="/">Volver a todos los ejemplos</a>
+    </main>
+    <script>
+      const pathParts = window.location.pathname.split('/').filter(Boolean)
+      const demoIndex = pathParts.lastIndexOf('demos')
+      const isDemoUrl = demoIndex >= 0 && demoIndex === pathParts.length - 2
+      const baseParts = isDemoUrl ? pathParts.slice(0, demoIndex) : pathParts.slice(0, 1)
+      const basePath = baseParts.length ? `/${baseParts.join('/')}/` : '/'
+      document.querySelector('#home').href = basePath
+
+      if (isDemoUrl) {
+        const demoId = pathParts[demoIndex + 1]
+        window.location.replace(`${basePath}?demo=${encodeURIComponent(demoId)}`)
+      }
+    </script>
+  </body>
+</html>
