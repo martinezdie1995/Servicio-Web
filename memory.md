@@ -27,6 +27,9 @@
 - Cinco previews enlazan a páginas completas de demostración con estructuras React y hojas de estilo separadas por rubro, no una plantilla compartida.
 - Publicación en GitHub Pages configurada con GitHub Actions; Vite y los enlaces/recursos estáticos usan la base `/Servicio-Web/`.
 
+## Actualización — 21/10/2026
+- El número comercial de WhatsApp quedó confirmado: +54 9 11 3604-6700; todos los CTA del sitio y las demostraciones usan ese destino.
+
 ## Actualización — 20/10/2026
 - La marca del encabezado del servicio usa el monograma del logo personal de Diego Martínez, acompañado por su nombre y una descripción clara del servicio para comercios.
 - Diagnóstico: los enlaces a `/Servicio-Web/demos/{id}` dependen de que el servidor estático reescriba rutas desconocidas a `index.html`. GitHub Pages no ofrece ese fallback; al abrir una demo directamente devuelve 404 antes de que React pueda resolverla.
@@ -65,10 +68,5 @@
 - Los CTA deben mantenerse visibles y legibles incluso en pantallas compactas.
 
 ## Próximas tareas
-- Confirmar el número comercial y reemplazar teléfonos y enlaces de WhatsApp ficticios.
 - Revisar ajustes finos visuales si se requieren luego de feedback.
 - Preparar una versión final para despliegue estático en Cloudflare Pages si corresponde.
-
-## Decisiones pendientes de confirmar
-- El contenido exacto del WhatsApp y teléfono comercial final.
-- El número comercial definitivo de WhatsApp.

@@ -4,7 +4,7 @@ import { demoHref } from './components/demos/demoLinks'
 import developerLogo from '../pics/devLogo.jpg'
 
 const whatsappLink =
-  'https://wa.me/5491121858308?text=Hola%2C+me+interesa+una+p%C3%A1gina+web+para+mi+comercio.'
+  'https://wa.me/5491136046700?text=Hola%2C+me+interesa+una+p%C3%A1gina+web+para+mi+comercio.'
 
 const routePath = window.location.pathname
 const appPath = routePath.startsWith(import.meta.env.BASE_URL)
